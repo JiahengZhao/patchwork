@@ -61,10 +61,8 @@ class PatchworkNodelet : public nodelet::Nodelet {
     pcl::PointCloud<PointType>::Ptr pc_output(new pcl::PointCloud<PointType>());
 
     static double time_taken;
-    std::cout << __LINE__ << std::endl;
     PatchworkGroundSeg->estimate_ground(pc_curr, *pc_ground, *pc_non_ground,
                                         time_taken);
-    std::cout << __LINE__ << std::endl;
 
     if (groundPublisher.getNumSubscribers() > 0) {
       auto msg_ground = cloud2msg(*pc_ground, frame_id);
