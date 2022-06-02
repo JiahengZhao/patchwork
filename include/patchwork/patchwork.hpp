@@ -412,7 +412,7 @@ double PatchWork<PointT>::consensus_set_based_height_estimation(const Eigen::Row
 
     }
 
-    size_t min_idx;
+    Eigen::RowVectorXd::Index min_idx;
     x_cost.minCoeff(&min_idx);
     double estimate_temp = x_hat(min_idx);
     return estimate_temp;
