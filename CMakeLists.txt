@@ -20,6 +20,7 @@ find_package(catkin REQUIRED COMPONENTS
         laser_geometry
         sensor_msgs
         message_generation
+        nodelet
         )
 
 add_message_files(
@@ -65,3 +66,10 @@ add_dependencies(offline_kitti patchwork_generate_messages_cpp)
 add_executable(offline_own_data nodes/offline_own_data.cpp)
 target_link_libraries(offline_own_data ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 add_dependencies(offline_own_data patchwork_generate_messages_cpp)
+
+add_library(patchwork_nodelet nodes/patchwork_nodelet.cpp)
+target_link_libraries(patchwork_nodelet
+  ${catkin_LIBRARIES}
+  ${PCL_LIBRARIES}
+)
+add_dependencies(patchwork_nodelet ${PROJECT_NAME}_gencpp)

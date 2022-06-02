@@ -1,0 +1,3 @@
+<library path="lib/libpatchwork_nodelet">
+<class name="patchwork/PatchworkNodelet" type="patchwork::PatchworkNodelet" base_class_type="nodelet::Nodelet" />
+</library>

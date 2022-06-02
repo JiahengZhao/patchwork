@@ -1,0 +1,16 @@
+<launch>
+
+
+<arg name="start_nodelet_manager" default="true"/>
+<arg name="nodelet_mode" default="true"/>
+<arg name="nodelet_manager" default="velodyne_nodelet_manager"/>
+
+<rosparam command="load" file="$(find patchwork)/config/params_au.yaml" />
+
+<node pkg="nodelet" type="nodelet" name="$(arg nodelet_manager)" args="manager" output="screen" if="$(arg start_nodelet_manager)"/>
+
+<node pkg="nodelet" type="nodelet" name="patchwork_nodelet" args="load patchwork/PatchworkNodelet $(arg nodelet_manager)" if="$(arg nodelet_mode)" output="screen">
+    <param name="/skip_num" value="20" />
+</node>
+
+</launch>
